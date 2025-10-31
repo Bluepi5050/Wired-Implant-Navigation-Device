@@ -166,7 +166,7 @@ void updateAngles(IMUData &imu, float dt) {
   float roll_acc  = atan2f(ayg, sqrtf(axg*axg + azg*azg)) * 180.0f / PI;
   float pitch_acc = atan2f(-axg, sqrtf(ayg*ayg + azg*azg)) * 180.0f / PI;
 
-  // Complementary filter
+  // Kalman filter
   imu.roll  = ALPHA * roll_gyro  + (1.0f - ALPHA) * roll_acc;
   imu.pitch = ALPHA * pitch_gyro + (1.0f - ALPHA) * pitch_acc;
 }
